@@ -7,15 +7,15 @@ public:
      */
     int aplusb(int a, int b) {
         // write your code here, try to do it without arithmetic operators.
-        
+
         int sum, carry;
 
-        do {
+        while (b != 0) {
             sum = a ^ b;
             carry = a & b;
             a = sum;
             b = carry << 1;
-        } while (b != 0);
+        }
 
         return a;
     }
