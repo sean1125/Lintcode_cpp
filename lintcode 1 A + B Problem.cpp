@@ -1,17 +1,22 @@
-// lintcode 1 A + B Problem
-
 class Solution {
+public:
     /*
-     * param a: The first integer
-     * param b: The second integer
-     * return: The sum of a and b
+     * @param a: The first integer
+     * @param b: The second integer
+     * @return: The sum of a and b
      */
-    public int aplusb(int a, int b) {
+    int aplusb(int a, int b) {
         // write your code here, try to do it without arithmetic operators.
-        if (b == 0) return a;
+        
+        int sum, carry;
 
-        int sum = a ^ b, carry = a & b;
+        do {
+            sum = a ^ b;
+            carry = a & b;
+            a = sum;
+            b = carry << 1;
+        } while (b != 0);
 
-        return aplusb(sum, carry << 1);
+        return a;
     }
 };
